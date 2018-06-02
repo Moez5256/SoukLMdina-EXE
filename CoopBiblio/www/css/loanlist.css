@@ -1,0 +1,121 @@
+#list-view { /* L'app est positionn� en plein �cran */
+	position: fixed;
+	top: 40px;
+	left:0px;
+	right:0px;
+	bottom:40px;
+}
+#emprunt-master { /* D�finition des propri�t� du maitre par d�faut en mode large */
+	width: 35%;
+	height: 100%;
+	background-color: #F2F2F2;
+	float: left;
+	box-sizing:border-box;
+	overflow-x: hidden;
+	overflow-y: auto;
+	border-right:1px solid #aaaaaa;
+	
+	
+}
+#emprunt-detail {  /* D�finition des propri�t� du d�tail par d�faut en mode large */
+	background-color: #F2F2F2;
+	width: 65%;
+	float:left;
+	height: 100%;
+	padding: 2% 2%;
+	box-sizing:border-box;
+	overflow-x: hidden;
+	overflow-y: auto;
+	color: #333333;
+}
+#emprunt-master ul {
+	list-style: none;
+	margin: 0px 0px;
+	padding: 0px 0px;
+}
+#emprunt-master ul li {
+	padding: 10px 10px;
+	border-bottom: 1px solid #aaaaaa;
+	color: #333333;
+	cursor: pointer;
+	position:relative;
+	height: 100px;
+}
+
+#emprunt-master .book-image {
+	height:98%;
+	vertical-align: middle;
+}
+#emprunt-master .book-info {
+	display: inline-block;
+	margin-left: 5%;
+}
+#emprunt-master .book-info {
+	vertical-align: middle;
+}
+#emprunt-master .book-title {
+	font-size: 0.85em;
+}
+#emprunt-master .loanee-name {
+	font-size: 0.9em;
+}
+#emprunt-master .loan-date {
+	font-size: 0.9em;
+}
+
+#emprunt-detail .book-image {
+	width:30%;
+	height:40%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#emprunt-detail .book-info {
+	width: 120px;
+	float: right;
+	position: relative;
+	clear:both;
+	margin-left: 20px;
+	margin-bottom: 20px;
+	text-align: center;
+}
+#emprunt-detail .book-info > div {
+	padding: 10px 10px;
+    color: black;
+	
+}
+
+@media (min-width: 920px) {
+	#emprunt-master ul li.selected {  /* Quand un item est s�lection�, nous allons changer sa couleur de bordure */
+		background-color: #BE81F7;
+		color: #ffffff;
+	}	
+}
+
+
+@media (max-width: 919px ){ /* Media Query qui g�re le style t�l�phone de l'interface */
+	#emprunt-master { /* Dans ce mode, le maitre et le d�tail sont aussi large que l'�cran */
+		width: 100%;
+	}
+	#emprunt-detail {
+		width: 100%;
+		display:none;
+	}
+	#emprunt-master ul li.selected .book-title { /* Le concept de s�lection n'existe plus */
+		color: #333333;
+	}
+    #emprunt-master ul li.selected .loanee-name { /* Le concept de s�lection n'existe plus */
+		color: #333333;
+	}
+    #emprunt-master ul li.selected .loan-date { /* Le concept de s�lection n'existe plus */
+		color: #333333;
+	}
+	
+	#list-view.mode-detail #emprunt-master { /* En mode d�tail, on cache le maitre pour montrer le d�tail */
+		display:none;					
+	}
+	#list-view.mode-detail #emprunt-detail {
+		display: block;
+	}
+
+}

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<!--HTML5 doctype-->
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Security-Policy" content="default-src *; style-src *  'unsafe-inline'; script-src *  'unsafe-inline'; media-src *">
+
+        <title>CoopBiblio</title>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, minimal-ui">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <link rel="stylesheet" type="text/css" href="lib/appframework/af.ui.css">
+        <link rel="stylesheet" type="text/css" href="css/loanlist.css">
+        <link rel="stylesheet" type="text/css" href="css/empruntlivre.css">
+        <link rel="stylesheet" type="text/css" href="css/retourlivre.css">
+
+    </head>
+
+    <body class="">
+
+        <div class="view">
+            <header>
+                <h1>Page  acceuil</h1>
+            </header>
+
+            <div class="pages">
+
+                <!--Tab View Pages-->
+                <div class="panel" data-title="Emprunter" id="tab1" data-selected="true">
+                    <div id="scanMembre">
+                        <br />
+                        <br />
+                        <br />
+                        <center>
+                            <font color="black" size="5">Veuillez scanner la carte du membre</font>
+                        </center>
+                        <br />
+                        <div id="carteMembre">
+                            <center>
+                                <img src="img/scan/carteEtud.png" width="70%">
+                            </center>
+                        </div>
+                        <br />
+                        <br />
+                        <br />
+                        <div id="scanBouton">
+                            <center>
+                                <input type="image" src="img/scan/scan.png" onclick="recupererMembre();" width="20%" height="20%">
+                            </center>
+                        </div>
+                    </div>
+                    
+                    <div id="scanLivre">
+                        <div id="header-emprunt">
+                            <br />
+                            <center>
+                                <font color="black" size="5">Veuillez scanner le livre à emprunter</font>
+                            </center>
+                            <br />
+                            <br />
+                            <center>
+                                <div id="erreur"></div>
+                                <div id="nom_emprunteur"></div>
+                                <div id="date_retour"></div>
+                            </center>
+                            <br />
+                            <center>
+                                <input type="image" src="img/scan/scan.png" onclick="livreEmprunt();" width="20%" height="20%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a class="button" id="TerminerEmprunt" onclick="validerEmprunt();">Terminer</a>
+                            </center>
+                        </div>
+                        <div id="emprunt-books">
+                            <ul></ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel" data-title="Récupérer" id="tab2">
+                    <div id="listBook-view">
+                        <div id="books-master">
+                            <br />
+                            <br />
+                            <br />
+                            <center>
+                                <font color="black" size="5%">Veuillez scanner le livre</font>
+                            </center>
+                            <br />
+                            <center>
+                                <input type="image" src="img/scan/scan.png" onclick="recupererLivre();" width="20%" height="20%" >
+                            </center>
+                        </div>
+                        <div id="books-detail">
+                            <ul></ul>
+                            <br />
+                            <center>
+                                <a class="button" id="validerRendu" onclick="validerRetour();" style="display:none;">Valider</a>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel" data-title="Emprunts en cours" id="tab3" >
+                    <div id="erreur"></div>
+        
+                    <div id="list-view">
+                        <div id="emprunt-master">
+                            
+                          <input type="Search" name="a" id="a" value="" placeholder="Chercher Livre "  onKeyPress="AfficherListe()" onKeyUp="AfficherListe()" style="width: 90%;">
+                            <select id="myselect" onchange="trierListe()" style="width: 90%;" >
+                                                           <option value="dateRendu">Trier par</option>
+
+                            <option value="dateRendu">Date Rendu</option>
+                                <option value="nom">Nom emprunteur</option>
+                                <option value="nomLivre">Nom livre</option>
+                               </select>
+                            <h2><font color="red" size="18px"><p id="demo" ></p></font></h2> 
+                                    
+                            <ul>
+                                
+                            </ul>
+                        </div> 
+                        
+                        <div id="emprunt-detail">
+                           
+                                
+                            <fieldset style="border-radius: 10px; padding: 10px;">
+                                <legend><b><font size="3px">Détails du livre : </font></b></legend><br />
+                                <center><img class="book-image"/> </center><p />
+                                <b><font size="3px">Titre : </font></b> <font class="book-title"  ></font><p />
+                                <b><font size="3px">Auteur : </font></b> <font class="book-autor"></font><p />
+                                <b> <font size="3px">Genre : </font></b> <font class="book-gendre"> </font><p />
+                                <b><font size="3px">Description : </font> </b><font  class="book-description"></font><p />
+                             </fieldset>
+                            
+                             <p /><p />
+                             <fieldset style="border-radius: 10px; padding: 10px;">
+                                <legend><b><font size="3px">Détails de l'emprunteur:</font></b> </legend><br />
+                                <b><font size="3px">Nom : </font></b> <font class="loanee-name"></font><p />
+                                <b><font size="3px">Prénom : </font></b><font class="loanee-prename"></font><p />
+                                <b><font size="3px">Courriel : </font></b> <font  class="loanee-mail"></font><p />
+                            </fieldset>
+                            
+                            <p /><p />
+                            <fieldset style="border-radius: 10px; padding: 10px;">
+                                <legend><b><font size="3px">Détails de l'emprunt :</font></b> </legend><br />
+                                <b><font size="3px">Date de remise : </font></b> <font  class="loan-date"></font><p />
+                             </fieldset>
+                            <p />
+                            
+				        </div>
+			       </div>
+                 </div>
+            </div>
+
+            <footer>
+                <a href="#tab1" ><img src="img/icon/emprunter.png" height="50%" ><br />Emprunt</a>
+                <a href="#tab2" ><img src="img/icon/recu.png" height="50%" ><br />Rendu</a>
+                <a href="#tab3" ><img src="img/icon/etage.png"  height="50%" ><br />Emprunts en cours</a>
+            </footer>
+        </div>
+        
+		<script src="lib/jquery-2.2.1/jquery-2.2.1.min.js"></script>
+        <script src="https://sdk.amazonaws.com/js/aws-sdk-2.24.0.min.js"></script>
+        <script type="text/javascript" src="lib/jquery-touchswipe/jquery.touchSwipe.min.js"></script>
+        <script type="text/javascript" charset="utf-8" src="lib/appframework/appframework.ui.min.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/scanner.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/emprunt.js"></script>
+        <script src="js/keys.js"></script>
+        <script src="js/index.js"></script>
+        <script src="cordova.js"></script>
+
+    </body>
+
+</html>

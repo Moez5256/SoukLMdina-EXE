@@ -1,0 +1,142 @@
+#scanLivre {
+	position: fixed;
+	top: 40px;
+	left:0px;
+	right:0px;
+	bottom:40px;
+}
+
+#scanMembre {
+	position: fixed;
+	top: 40px;
+	left:0px;
+	right:0px;
+	bottom:40px;
+}
+
+#carteMembre {
+	width: 100%;
+	height: 45%;
+	float: left;
+	box-sizing:border-box;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+#scanBouton {
+	width: 100%;
+	height: 45%;
+	float:left;
+	box-sizing:border-box;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+#header-emprunt {
+	width: 30%;
+	height: 100%;
+	background-color: #F2F2F2;
+	float: left;
+	box-sizing:border-box;
+	overflow-x: hidden;
+	overflow-y: auto;
+	border-right:1px solid #aaaaaa;
+
+}
+#emprunt-books {
+	background-color: #F2F2F2;
+	width: 70%;
+	float:left;
+	height: 100%;
+	padding: 2% 2%;
+	box-sizing:border-box;
+	overflow-x: hidden;
+	overflow-y: auto;
+	color: #333333;
+}
+#emprunt-books ul {
+	list-style: none;
+	margin: 0px 0px;
+	padding: 0px 0px;
+}
+#emprunt-books ul li {
+	padding: 10px 10px;
+	border-bottom: 1px solid #aaaaaa;
+	color: #333333;
+	cursor: pointer;
+	position:relative;
+	height: 100px;
+}
+#emprunt-books .book-info {
+	display: inline-block;
+	margin-left: 5%;
+	vertical-align: middle;
+}
+
+#emprunt-books .book-info {
+	vertical-align: middle;
+}
+
+#emprunt-books .book-image {
+	height:98%;
+	vertical-align: middle;
+}
+#emprunt-books .book-title {
+	font-size: 1em;
+}
+#emprunt-books .book-auteur {
+	font-size: 0.8em;
+}
+
+@media (min-width: 920px){	
+}
+
+@media (orientation:portrait) and (max-width: 919px ){
+	#header-emprunt {
+		width: 100%;
+		height: 55%;
+	}
+	#emprunt-books {
+		width: 100%;
+		height: 45%;
+	}
+}
+
+@media (orientation:landscape) and (max-width: 919px ){
+	#header-emprunt {
+		width: 55%;
+		height: 100%;
+	}
+	#emprunt-books {
+		width: 45%;
+		height: 100%;
+	}
+}
+
+@media (orientation:landscape){
+	#header-emprunt {
+		width: 40%;
+		height: 100%;
+	}
+	#emprunt-books {
+		width: 50%;
+		height: 100%;
+	}
+	#carteMembre {
+		width: 40%;
+		height: 100%;
+	}
+	#scanBouton {
+		width: 50%;
+		height: 100%;
+	}
+}
+
+a.button {
+    color:#222;
+    padding: 5px 10px;
+    background:#ccc;
+    margin-top: 25px;
+    border-radius: 10px;
+    border-color: #c4c4c4
+}
